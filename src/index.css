@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Roda Bem — Dark Premium Auto Center */
+    --background: 222 18% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 18% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 18% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Verde intenso (energia / robustez) */
+    --primary: 142 78% 44%;
+    --primary-foreground: 222 25% 10%;
+
+    /* Verde “glow” para detalhes e brilho */
+    --primary-glow: 150 84% 56%;
+
+    --secondary: 222 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 14% 14%;
+    --muted-foreground: 215 18% 70%;
+
+    --accent: 222 14% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 142 78% 44%;
+
+    --radius: 0.9rem;
+
+    /* Extras semânticos */
+    --surface: 222 18% 9%;
+    --surface-2: 222 18% 12%;
+
+    --shadow-elev-1: 0 12px 30px -18px hsl(222 40% 2% / 0.9);
+    --shadow-elev-2: 0 24px 60px -30px hsl(222 40% 2% / 0.95);
+    --shadow-glow: 0 18px 55px -22px hsl(var(--primary) / 0.55);
+
+    --gradient-hero: radial-gradient(1200px 650px at 10% 0%, hsl(var(--primary) / 0.22), transparent 55%),
+      radial-gradient(900px 520px at 95% 30%, hsl(var(--primary-glow) / 0.14), transparent 55%),
+      linear-gradient(180deg, hsl(222 18% 6% / 0.86), hsl(222 18% 7% / 0.94));
+
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-2)));
+
+    /* Controlado via JS no Hero (assinatura) */
+    --glow-x: 50%;
+    --glow-y: 35%;
+    --glow-opacity: 0.38;
+
+    /* Sidebar tokens (mantidos p/ compatibilidade) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Mantém compatibilidade: o tema padrão já é dark */
+    --background: 222 18% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 18% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 18% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 78% 44%;
+    --primary-foreground: 222 25% 10%;
+    --primary-glow: 150 84% 56%;
+
+    --secondary: 222 14% 14%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 14% 14%;
+    --muted-foreground: 215 18% 70%;
+
+    --accent: 222 14% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 142 78% 44%;
+
+    --surface: 222 18% 9%;
+    --surface-2: 222 18% 12%;
+    --shadow-elev-1: 0 12px 30px -18px hsl(222 40% 2% / 0.9);
+    --shadow-elev-2: 0 24px 60px -30px hsl(222 40% 2% / 0.95);
+    --shadow-glow: 0 18px 55px -22px hsl(var(--primary) / 0.55);
+    --gradient-hero: radial-gradient(1200px 650px at 10% 0%, hsl(var(--primary) / 0.22), transparent 55%),
+      radial-gradient(900px 520px at 95% 30%, hsl(var(--primary-glow) / 0.14), transparent 55%),
+      linear-gradient(180deg, hsl(222 18% 6% / 0.86), hsl(222 18% 7% / 0.94));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(var(--surface-2)));
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer utilities {
+  .bg-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .surface {
+    background-image: var(--gradient-surface);
+  }
+
+  .shadow-elev-1 {
+    box-shadow: var(--shadow-elev-1);
+  }
+
+  .shadow-elev-2 {
+    box-shadow: var(--shadow-elev-2);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glow-field {
+    background: radial-gradient(600px 320px at var(--glow-x) var(--glow-y),
+        hsl(var(--primary) / var(--glow-opacity)),
+        transparent 55%);
+  }
+
+  .story-link {
+    @apply relative inline-flex items-center gap-1 font-medium text-muted-foreground transition-colors hover:text-foreground;
+  }
+
+  .story-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-0.5 w-full origin-bottom-right scale-x-0 bg-primary transition-transform duration-300;
+  }
+
+  .story-link:hover::after {
+    @apply origin-bottom-left scale-x-100;
+  }
+
+  .cta-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-shine::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(600px 220px at 30% 25%, hsl(var(--primary-glow) / 0.55), transparent 55%),
+      linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--primary-glow) / 0.9));
+    opacity: 0.9;
+    filter: saturate(1.1);
+    transform: translateZ(0);
+  }
+
+  .cta-shine > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes pulse-red-shadow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 0 hsl(var(--destructive) / 0),
+        0 10px 30px -18px hsl(var(--destructive) / 0.25);
+      transform: translateY(0);
+    }
+
+    50% {
+      box-shadow:
+        0 0 0 2px hsl(var(--destructive) / 0.25),
+        0 22px 60px -24px hsl(var(--destructive) / 0.75);
+      transform: translateY(-1px);
+    }
+  }
+
+  .pulse-red {
+    animation: pulse-red-shadow 1.15s ease-in-out infinite;
+    will-change: box-shadow, transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-red {
+      animation: none;
+      transform: none;
+    }
+  }
+}
